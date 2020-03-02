@@ -77,7 +77,7 @@ DATABASES = {
         'NAME': 'port',
         'USER': 'moringaschool',
         'PASSWORD':'100benjail',
-        'PORT':'5432'
+        'PORT':'5432',
     }
 }
 
