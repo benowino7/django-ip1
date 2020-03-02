@@ -7,13 +7,14 @@ import dj_database_url
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY='benjail'
+SECRET_KEY=config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
+
 
 ALLOWED_HOSTS = ['*']
-INTERNAL_IPS = ('0.0.0.0','127.0.0.1','localhost',)
+# INTERNAL_IPS = ('0.0.0.0','127.0.0.1','localhost',)
 
 INSTALLED_APPS = [
     'app',
@@ -49,7 +50,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'django_photo_gallery.urls'
-db_from_env = dj_database_url.config(conn_max_age=500)
 
 TEMPLATES = [
     {
@@ -69,12 +69,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'django_photo_gallery.wsgi.application'
 
+db_from_env = dj_database_url.config(conn_max_age=500)
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'port',
         'USER': 'moringaschool',
-    'PASSWORD':'100benjail',
+        'PASSWORD':'100benjail',
     }
 }
 
@@ -147,11 +149,11 @@ CACHES = {
     }
 }
 
-EMAIL_USE_TLS = config('EMAIL_USE_TLS')
-EMAIL_HOST = config('EMAIL_HOST')
-EMAIL_PORT = config('EMAIL_PORT')
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+# EMAIL_USE_TLS = config('EMAIL_USE_TLS')
+# EMAIL_HOST = config('EMAIL_HOST')
+# EMAIL_PORT = config('EMAIL_PORT')
+# EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
