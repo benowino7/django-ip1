@@ -72,13 +72,9 @@ WSGI_APPLICATION = 'django_photo_gallery.wsgi.application'
 db_from_env = dj_database_url.config(conn_max_age=500)
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'port',
-        'USER': 'moringaschool',
-        'PASSWORD':'100benjail',
-        'PORT':'5432',
-    }
+    'default': dj_database_url.config(
+        default = config('DATABASE_URL')
+    )
 }
 
 AUTH_PASSWORD_VALIDATORS = [
