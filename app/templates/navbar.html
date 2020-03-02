@@ -1,0 +1,51 @@
+{% load bootstrap3 %}
+{% load bootstrap4 %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="{% url 'gallery' %}">BenJail Gallery</a>
+      </div>
+      <div class="col-sm-4 col-md-4 navbar-right">
+
+        <form class="navbar-form" role="search" action="{% url 'search_results' %}">
+
+          <div class="input-group mb-3">
+            <input type="text" class="form-control btn-outline-info" id="input" placeholder="Album" name="album">
+            <div class="input-group-append">
+              <button class="btn btn-default" id="ben" type="submit" name="search">Search</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+    </div>
+  </nav>
+</body>
+<style>
+  #input{
+    border: 3px black solid;
+    border-radius: 10px;
+    padding-left: 4px;
+    text-align: left;
+  }
+  #ben{
+    height: 50px;
+    border-radius: 10px;
+    color: white;
+    background-color: black;
+  }
+</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</html>
