@@ -16,7 +16,7 @@ ALLOWED_HOSTS = ['*']
 INTERNAL_IPS = ('0.0.0.0','127.0.0.1','localhost',)
 
 INSTALLED_APPS = [
-    'app.apps.AppConfig',
+    'app',
     'material',
     'bootstrap3',
     'bootstrap4',
@@ -50,8 +50,6 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'django_photo_gallery.urls'
 db_from_env = dj_database_url.config(conn_max_age=500)
-
-DATABASES['default'].update(db_from_env)
 
 TEMPLATES = [
     {
