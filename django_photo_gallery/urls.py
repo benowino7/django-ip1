@@ -13,6 +13,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = [
+    url(r'^admin/', admin.site.urls),
     url(r'^$', app.views.gallery, name='gallery'),
     url(r'^search/', app.views.search_results, name='search_results'),
     url(r'^favicon\.ico$', RedirectView.as_view(url='/static/icons/favicon.ico', permanent=True)),
@@ -23,7 +24,7 @@ urlpatterns = [
     url(r'^accounts/login/$', views.LoginView, name='login'),
     url(r'^logout$', views.LogoutView, { 'next_page': '/', }, name='logout'),
     # Uncomment the next line to enable the admin:
-    url(r'^admin/', admin.site.urls),
+    
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
