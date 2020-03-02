@@ -69,15 +69,27 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'django_photo_gallery.wsgi.application'
 
-# db_from_env = dj_database_url.config(conn_max_age=500)
+db_from_env = dj_database_url.config(conn_max_age=500)
 
-# DATABASES = {
-#     'default': dj_database_url.config(
-#         default = config('DATABASE_URL')
-#     )
-# }
-db_from_env = dj_database_url.config(conn_max_age=500) 
-DATABASES['default'].update(db_from_env)
+if config('MODE')=='dev':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': config('DB_NAME'),
+            'USER': config('DB_USER'),
+            'HOST': config('DB_HOST'),
+            'PASSWORD':config('DB_PASSWORD'),
+        }
+    }
+else:
+    DATABASES = {
+        'default': dj_database_url.config(
+            default = config('DATABASE_URL')
+        )
+    }
+
+# db_from_env = dj_database_url.config(conn_max_age=500) 
+# DATABASES['default'].update(db_from_env)
 
 AUTH_PASSWORD_VALIDATORS = [
     {
