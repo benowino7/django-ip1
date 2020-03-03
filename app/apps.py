@@ -1,5 +1,5 @@
-from django.apps import AppConfig
+from django.apps import AppConfig#helps in general configs of the app
 
 
-class NewsConfig(AppConfig):
+class AppConfig(AppConfig):#configuring the app name
     name = 'app'

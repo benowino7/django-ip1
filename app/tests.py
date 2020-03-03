@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Editor,Article,tags
+from .models import Editor,album,tags
 import datetime as dt
 
 
@@ -19,7 +19,7 @@ class EditorTestClass(TestCase):
         self.james.save_editor()
         editors = Editor.objects.all()
         self.assertTrue(len(editors) > 0)
-class ArticleTestClass(TestCase):
+class AlbumTestClass(TestCase):
 
     def setUp(self):
         # Creating a new editor and saving it
@@ -30,22 +30,22 @@ class ArticleTestClass(TestCase):
         self.new_tag = tags(name = 'testing')
         self.new_tag.save()
 
-        self.new_article= Article(title = 'Test Article',post = 'This is a random test Post',editor = self.james)
-        self.new_article.save()
+        self.new_album= Album(title = 'Test Album',post = 'This is a random test Post',editor = self.james)
+        self.album.save()
 
-        self.new_article.tags.add(self.new_tag)
+        self.new_album.tags.add(self.new_tag)
 
     def tearDown(self):
         Editor.objects.all().delete()
         tags.objects.all().delete()
-        Article.objects.all().delete()
+        Album.objects.all().delete()
 
-    def test_get_news_today(self):
-        today_news = Article.todays_news()
-        self.assertTrue(len(today_news)>0)
+    def test_get_albumimage(self):
+        albumimage = album.albumimage()
+        self.assertTrue(len(albumimage)>0)
 
-     def test_get_news_by_date(self):
+     def test_get_app_by_date(self):
         test_date = '2020-02-25'
         date = dt.datetime.strptime(test_date, '%Y-%m-%d').date()
-        news_by_date = Article.days_news(date)
-        self.assertTrue(len(news_by_date) == 0)
+        app_by_date =Album.albumimage(date)
+        self.assertTrue(len(app_by_date) == 0)

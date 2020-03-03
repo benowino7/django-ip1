@@ -10,6 +10,6 @@ def send_welcome_email(name,receiver):
     text_content = render_to_string('email/newsemail.txt',{"name": name})
     html_content = render_to_string('email/newsemail.html',{"name": name})
 
-    msg = EmailMultiAlternatives(subject,text_content,sender,[receiver])
+    msg = EmailMultiAlternatives(subject,text_content,sender,[receiver])#we require different multiple data and send the message
     msg.attach_alternative(html_content,'text/html')
     msg.send()
